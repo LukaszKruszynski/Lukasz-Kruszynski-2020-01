@@ -18,12 +18,11 @@ public class TestingMain {
         //com.kodilla.testing.calculator
         Calculator calculator = new Calculator();
         int resultAddAtoB = calculator.addAtoB(4, 3);
-        System.out.println("result Add A to B test: " + resultAddAtoB);
         int resultSubstracAfromB = calculator.substractAfromB(12, 3);
-        System.out.println("result substract A from B test: " + resultSubstracAfromB);
+        if ((resultAddAtoB == 7) && (resultSubstracAfromB == 9)) {
+            System.out.println("calculator test - OK!");
+        } else{
+            System.out.println("calculator test - ERROR!");
+        }
     }
 }
-
-
-
-
