@@ -19,10 +19,16 @@ public class TestingMain {
         Calculator calculator = new Calculator();
         int resultAddAtoB = calculator.addAtoB(4, 3);
         int resultSubstracAfromB = calculator.substractAfromB(12, 3);
-        if ((resultAddAtoB == 7) && (resultSubstracAfromB == 9)) {
-            System.out.println("calculator test - OK!");
-        } else{
-            System.out.println("calculator test - ERROR!");
+        if (resultAddAtoB == 7) {
+            System.out.println("Addition method- OK!");
+        } else {
+            System.out.println("Addition method- ERROR!");
+        }
+        if (resultSubstracAfromB == 8) {
+            System.out.println("Subtraction method- OK!");
+        } else {
+            System.out.println("Subtraction method- ERROR!");
         }
     }
+
 }
