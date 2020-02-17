@@ -80,9 +80,10 @@ public class ShapeCollectorTestSuite {
         //Given
         Shape circle1 = new Circle(3.14, 7.49);
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(circle1);
+
 
         //When
+        shapeCollector.addFigure(circle1);
         boolean result = shapeCollector.removeFigure(circle1);
 
         //Then
@@ -96,9 +97,10 @@ public class ShapeCollectorTestSuite {
         //Given
         Shape square1 = new Square(8.34);
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(square1);
+
 
         //When
+        shapeCollector.addFigure(square1);
         boolean result = shapeCollector.removeFigure(square1);
 
         //Then
@@ -111,9 +113,10 @@ public class ShapeCollectorTestSuite {
         //Given
         Shape triangle1 = new Triangle(9.7, 13);
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(triangle1);
+
 
         //When
+        shapeCollector.addFigure(triangle1);
         boolean result = shapeCollector.removeFigure(triangle1);
 
         //Then
@@ -127,9 +130,10 @@ public class ShapeCollectorTestSuite {
 
         Shape circle1 = new Circle(3.14, 7.49);
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(circle1);
+
 
         //When
+        shapeCollector.addFigure(circle1);
         Shape figureCircle = shapeCollector.getFigure(0);
 
         //Then
@@ -141,9 +145,10 @@ public class ShapeCollectorTestSuite {
         //Given
         Shape square1 = new Square(8.34);
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(square1);
+
 
         //When
+        shapeCollector.addFigure(square1);
         Shape figureSquare = shapeCollector.getFigure(0);
 
         //Then
@@ -155,9 +160,10 @@ public class ShapeCollectorTestSuite {
         //Given
         Shape triangle1 = new Triangle(9.7, 13);
         ShapeCollector shapeCollector = new ShapeCollector();
-        shapeCollector.addFigure(triangle1);
+
 
         //When
+        shapeCollector.addFigure(triangle1);
         Shape figureTriangle = shapeCollector.getFigure(0);
 
         //Then
@@ -173,15 +179,16 @@ public class ShapeCollectorTestSuite {
         Shape square1 = new Square(8.34);
         Shape triangle1 = new Triangle(9.7, 13);
         ShapeCollector shapeCollector = new ShapeCollector();
+
+
+
+        //When
         shapeCollector.addFigure(circle1);
         shapeCollector.addFigure(square1);
         shapeCollector.addFigure(triangle1);
         expectedShapes.add(circle1);
         expectedShapes.add(square1);
         expectedShapes.add(triangle1);
-
-
-        //When
         ArrayList<Shape> shapes = shapeCollector.shapes;
 
         //Then
