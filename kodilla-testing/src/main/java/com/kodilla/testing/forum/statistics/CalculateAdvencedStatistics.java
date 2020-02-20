@@ -1,9 +1,9 @@
 package com.kodilla.testing.forum.statistics;
 
 public class CalculateAdvencedStatistics {
-    private int usersQuantity;
-    private int postsQuantity;
-    private int commentsQuantity;
+    private double usersQuantity;
+    private double postsQuantity;
+    private double commentsQuantity;
     private double averagePostsByUser;
     private double averageCommentsByUser;
     private double averageCommentsByPost;
@@ -12,7 +12,11 @@ public class CalculateAdvencedStatistics {
         usersQuantity = statistics.usersNames().size();
         postsQuantity = statistics.postsCount();
         commentsQuantity = statistics.commentsCount();
-        averageCommentsByUser = commentsQuantity/ usersQuantity;
+        if(commentsQuantity != 0 || usersQuantity != 0) {
+            averageCommentsByUser = commentsQuantity / usersQuantity;
+        }else{
+            averageCommentsByUser = 0;
+        }
         if(postsQuantity != 0) {
             averagePostsByUser = postsQuantity / usersQuantity ;
             averageCommentsByPost = commentsQuantity / postsQuantity;
@@ -28,15 +32,15 @@ public class CalculateAdvencedStatistics {
     }
 
     public int getUsersQuantity() {
-        return usersQuantity;
+        return (int) usersQuantity;
     }
 
     public int getPostsQuantity() {
-        return postsQuantity;
+        return (int) postsQuantity;
     }
 
     public int getCommentsQuantity() {
-        return commentsQuantity;
+        return (int) commentsQuantity;
     }
 
     public double getAveragePostsByUser() {
