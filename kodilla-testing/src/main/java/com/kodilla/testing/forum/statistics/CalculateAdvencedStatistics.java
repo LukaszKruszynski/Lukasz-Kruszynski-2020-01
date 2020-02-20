@@ -1,44 +1,53 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.List;
-
-public class CalculateAdvencedStatistics implements Statistics {
-    int usersQuantity;
-    int postsQuantity;
-    int commentsQuantity;
-    double averagePostsByUser;
-    double averageCommentsByUser;
-    double averageCommentsByPost;
-
-    public CalculateAdvencedStatistics(int usersQuantity, int postsQuantity, int commentsQuantity) {
-        this.usersQuantity = usersQuantity;
-        this.postsQuantity = postsQuantity;
-        this.commentsQuantity = commentsQuantity;
-    }
+public class CalculateAdvencedStatistics {
+    private int usersQuantity;
+    private int postsQuantity;
+    private int commentsQuantity;
+    private double averagePostsByUser;
+    private double averageCommentsByUser;
+    private double averageCommentsByPost;
 
     public void calculateAdvStatistics(Statistics statistics) {
-        double averagePostsByUser = usersQuantity / postsQuantity;
-        double averageCommentsByUser = usersQuantity / commentsQuantity;
-        double averageCommentsByPost = commentsQuantity / postsQuantity;
-
+        usersQuantity = statistics.usersNames().size();
+        postsQuantity = statistics.postsCount();
+        commentsQuantity = statistics.commentsCount();
+        averageCommentsByUser = commentsQuantity/ usersQuantity;
+        if(postsQuantity != 0) {
+            averagePostsByUser = usersQuantity / postsQuantity;
+            averageCommentsByPost = commentsQuantity / postsQuantity;
+        }else{
+            averagePostsByUser = 0;
+            averageCommentsByPost = 0;
+        }
     }
+
 
     public double showStatistics() {
         return averagePostsByUser + averageCommentsByUser + averageCommentsByPost;
     }
 
-    @Override
-    public List<String> usersNames() {
-        return null;
+    public int getUsersQuantity() {
+        return usersQuantity;
     }
 
-    @Override
-    public int postsCount() {
-        return 0;
+    public int getPostsQuantity() {
+        return postsQuantity;
     }
 
-    @Override
-    public int commentsCount() {
-        return 0;
+    public int getCommentsQuantity() {
+        return commentsQuantity;
+    }
+
+    public double getAveragePostsByUser() {
+        return averagePostsByUser;
+    }
+
+    public double getAverageCommentsByUser() {
+        return averageCommentsByUser;
+    }
+
+    public double getAverageCommentsByPost() {
+        return averageCommentsByPost;
     }
 }
