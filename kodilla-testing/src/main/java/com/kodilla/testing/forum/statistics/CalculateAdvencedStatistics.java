@@ -14,7 +14,7 @@ public class CalculateAdvencedStatistics {
         commentsQuantity = statistics.commentsCount();
         averageCommentsByUser = commentsQuantity/ usersQuantity;
         if(postsQuantity != 0) {
-            averagePostsByUser = usersQuantity / postsQuantity;
+            averagePostsByUser = postsQuantity / usersQuantity ;
             averageCommentsByPost = commentsQuantity / postsQuantity;
         }else{
             averagePostsByUser = 0;

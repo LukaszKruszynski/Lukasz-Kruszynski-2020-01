@@ -45,7 +45,7 @@ public class CalculateAdvencedStatisticsTestSuite {
     public void testCalculateAdvencedStatistics_0Posts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        when(statisticsMock.postsCount()).thenReturn(5);
+        when(statisticsMock.postsCount()).thenReturn(0);
         when(statisticsMock.commentsCount()).thenReturn(120);
         List<String> userList = new ArrayList<>();
         userList.add("user1");
@@ -61,10 +61,10 @@ public class CalculateAdvencedStatisticsTestSuite {
         //Then
         Assert.assertEquals(4, underTest.getUsersQuantity());
         Assert.assertEquals(120, underTest.getCommentsQuantity());
-        Assert.assertEquals(5, underTest.getPostsQuantity());
-        Assert.assertEquals(24, underTest.getAverageCommentsByPost(), 0.001);
+        Assert.assertEquals(0, underTest.getPostsQuantity());
+        Assert.assertEquals(0, underTest.getAverageCommentsByPost(), 0.001);
         Assert.assertEquals(30, underTest.getAverageCommentsByUser(), 0.001);
-        Assert.assertEquals(1.25, underTest.getAveragePostsByUser(), 0.001);
+        Assert.assertEquals(0, underTest.getAveragePostsByUser(), 0.001);
     }
 
     @Test
@@ -88,6 +88,29 @@ public class CalculateAdvencedStatisticsTestSuite {
         Assert.assertEquals(0, underTest.getAverageCommentsByPost(), 0.001);
         Assert.assertEquals(0, underTest.getAverageCommentsByUser(), 0.001);
         Assert.assertEquals(50, underTest.getAveragePostsByUser(), 0.001);
+
+    }
+    @Test
+    public void testCalculateAdvencedStatistics_0Comments() {
+        //Given
+        Statistics statisticsMock = mock(Statistics.class);
+        when(statisticsMock.postsCount()).thenReturn(2);
+        when(statisticsMock.commentsCount()).thenReturn(0);
+        List<String> userList = generatorOfUsers(10);
+
+        when(statisticsMock.usersNames()).thenReturn(userList);
+        CalculateAdvencedStatistics underTest = new CalculateAdvencedStatistics();
+
+        //When
+        underTest.calculateAdvStatistics(statisticsMock);
+
+        //Then
+        Assert.assertEquals(10, underTest.getUsersQuantity());
+        Assert.assertEquals(0, underTest.getCommentsQuantity());
+        Assert.assertEquals(2, underTest.getPostsQuantity());
+        Assert.assertEquals(0, underTest.getAverageCommentsByPost(), 0.001);
+        Assert.assertEquals(0, underTest.getAverageCommentsByUser(), 0.001);
+        Assert.assertEquals(0.2, underTest.getAveragePostsByUser(),0.001);
 
     }
 }
