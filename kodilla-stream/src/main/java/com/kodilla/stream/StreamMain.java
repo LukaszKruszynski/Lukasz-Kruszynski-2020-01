@@ -1,10 +1,8 @@
 package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.beautifier.PoemDecorator;
 import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.reference.FunctionalCalculator;
-import com.kodilla.stream.reference.FunctionalEnhancer;
 
 
 public class StreamMain {
@@ -25,12 +23,10 @@ public class StreamMain {
         System.out.println("Enhancered text by lambda");
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        poemBeautifier.beautify("ABC", "Kaczuszki", ((enhancer, textAfterBeauty) -> enhancer + textAfterBeauty + enhancer));
-        poemBeautifier.beautify("This is madness!? This is ", "Sparta!", ((enhancer, textAfterBeauty) -> enhancer + textAfterBeauty));
-        poemBeautifier.beautify("", "who say javaaaa!?", ((enhancer, textAfterBeauty) -> textAfterBeauty.toUpperCase()));
-        poemBeautifier.beautify("", "SWEET DREAMS BABY.", ((enhancer, textAfterBeauty) -> textAfterBeauty.toLowerCase()));
+        poemBeautifier.beautify("ABC", enhancer -> enhancer + "Kaczuszki" + enhancer);
+        poemBeautifier.beautify("*", enhancer -> enhancer + "Avada Kedavra" + enhancer);
+        poemBeautifier.beautify("who say java!?",enhancer -> enhancer.toUpperCase());
+        poemBeautifier.beautify("SWEET DREAMS BABY.",enhancer -> enhancer.toLowerCase());
 
-        System.out.println("Enhancered text by references");
-        poemBeautifier.beautify("DUO", "Kaczuszki", FunctionalEnhancer::enhancer);
     }
 }
