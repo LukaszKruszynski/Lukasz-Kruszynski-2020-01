@@ -6,12 +6,12 @@ import java.util.Objects;
 public final class Country {
     private final BigDecimal peopleQuantity;
     private final String nameOfCountry;
-    private final String nameOfContinent;
 
-    public Country(BigDecimal peopleQuantity, String nameOfCountry, String nameOfContinent) {
+
+    public Country(BigDecimal peopleQuantity, String nameOfCountry) {
         this.peopleQuantity = peopleQuantity;
         this.nameOfCountry = nameOfCountry;
-        this.nameOfContinent = nameOfContinent;
+
 
     }
 
@@ -23,9 +23,6 @@ public final class Country {
         return nameOfCountry;
     }
 
-    public String getNameOfContinent() {
-        return nameOfContinent;
-    }
 
     @Override
     public boolean equals(Object o) {

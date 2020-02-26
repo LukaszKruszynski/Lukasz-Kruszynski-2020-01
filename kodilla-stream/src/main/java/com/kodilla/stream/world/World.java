@@ -7,12 +7,15 @@ import java.util.Set;
 public final class World {
     private final Set<Continent> continentList = new HashSet<>();
 
-    public Set<Continent> getContinentList() {
-        return continentList;
+    public World(Set<Continent> continents) {
+        this.continentList.addAll(continents);
     }
 
     public BigDecimal getPeopleQuantity() {
-       return null;
+                return continentList.stream()
+                .flatMap(continent -> continent.getCountrySet().stream())
+                .map(Country::getPeopleQuantity)
+                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
 
     }
 }
