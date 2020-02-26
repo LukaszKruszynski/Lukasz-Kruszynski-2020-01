@@ -31,7 +31,7 @@ public class WorldTestSuite {
         countryOfAsia.add(russia);
 
         Continent europe = new Continent("Europe", countryOfEurope);
-        Continent asia = new Continent("Asia",countryOfAsia);
+        Continent asia = new Continent("Asia", countryOfAsia);
 
         Set<Continent> world = new HashSet<>();
         world.add(europe);
