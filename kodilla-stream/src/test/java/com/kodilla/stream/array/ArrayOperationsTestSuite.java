@@ -1,11 +1,13 @@
 package com.kodilla.stream.array;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ArrayOperationsTestSuite {
 
     @Test
     public void testGetAverage() {
+        //Given
         int[] demage = new int[20];
         demage[0] = 127;
         demage[1] = 264;
@@ -28,7 +30,10 @@ public class ArrayOperationsTestSuite {
         demage[18] = 214;
         demage[19] = 0;
         System.out.println("List of result");
-        ArrayOperations.getAverage(demage);
-
+        //When
+        double average = ArrayOperations.getAverage(demage);
+        //Than
+        double expected = 332.6;
+        Assert.assertEquals(expected,average,0.001);
     }
 }
