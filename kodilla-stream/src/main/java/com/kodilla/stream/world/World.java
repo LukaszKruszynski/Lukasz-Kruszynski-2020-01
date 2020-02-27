@@ -7,7 +7,7 @@ import java.util.Set;
 public final class World {
     private final Set<Continent> continentList = new HashSet<>();
 
-    public World(Set<Continent> continents) {
+    public World(final Set<Continent> continents) {
         this.continentList.addAll(continents);
     }
 
