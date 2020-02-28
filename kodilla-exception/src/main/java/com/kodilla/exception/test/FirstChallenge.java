@@ -1,6 +1,5 @@
 package com.kodilla.exception.test;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class FirstChallenge {
@@ -18,6 +17,7 @@ public class FirstChallenge {
      *
      * @param args
      */
+
     public static void main(String[] args) {
 
         FirstChallenge firstChallenge = new FirstChallenge();
