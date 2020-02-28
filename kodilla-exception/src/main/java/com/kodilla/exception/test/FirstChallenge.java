@@ -1,20 +1,14 @@
 package com.kodilla.exception.test;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class FirstChallenge {
+    String messageOfDivideBy0 = "Divide by 0 is forbidden. Changing result to 0.";
 
     public double divide(double a, double b) throws ArithmeticException {
-
-        try {
-            if (b == 0) {
-                throw new ArithmeticException();
-            }
-        } catch (ArithmeticException e) {
-            System.out.println("Nie dzielimy przez 0. Zmieniam wynik na 0.");
-            return 0;
-        } finally {
-            System.out.println("Godzina utworzenia wyniku: " + LocalTime.now());
+        if (b == 0) {
+            throw new ArithmeticException();
         }
         return a / b;
     }
@@ -27,10 +21,16 @@ public class FirstChallenge {
     public static void main(String[] args) {
 
         FirstChallenge firstChallenge = new FirstChallenge();
+        double result = 0;
+        try {
+            result = firstChallenge.divide(3, 0);
+        } catch (ArithmeticException e) {
+            System.out.println(firstChallenge.messageOfDivideBy0);
 
-        double result = firstChallenge.divide(3, 0);
-
+        } finally {
+            System.out.println("Time of result: " + LocalTime.now());
+        }
         System.out.println(result);
-
     }
 }
+
