@@ -33,7 +33,23 @@ public class UserDialogs {
         }
     }
 
-    public static UserSelection getDecision() {
+    public static UserSelection getDecisionToNewGame() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("New game? (N)o  (Y)es: ");
+            String s = scanner.nextLine().trim().toUpperCase();
+            switch (s) {
+                case "Y":
+                    return UserSelection.YES;
+                case "N":
+                    return UserSelection.NO;
+                default:
+                    System.out.println("Wrong selection, try again");
+            }
+        }
+    }
+
+    public static UserSelection getDecisionToQuit() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("End of session? (N)o (Y)es: ");
@@ -43,6 +59,8 @@ public class UserDialogs {
                     return UserSelection.YES;
                 case "N":
                     return UserSelection.NO;
+                default:
+                    System.out.println("Wrong selection, try again");
             }
         }
     }
@@ -69,9 +87,40 @@ public class UserDialogs {
         }
     }
 
-    public static void displayPartialScore(Winner winner, UserSelection userSelection, ComputerSelection computerSelection, int humanScore, int computerScore) {
+    public static void displayPartialScore(Winner winner, UserSelection userSelection, ComputerSelection
+            computerSelection, int humanScore, int computerScore) {
 
         System.out.println("You choice " + userSelection + ".\n Computer choice " + computerSelection + ".\n " +
                 winner + " win round.\n " + "Your score: " + humanScore + "\n Computer score: " + computerScore);
+    }
+
+
+    public static void displayGameScore(String userName, String computerName, int humanScore, int computerScore, Winner winner) {
+        if (winner == Winner.HUMAN) {
+            System.out.println("You: " + humanScore + "  vs  Computer: " + computerScore + "\n" + userName + " won!");
+        } else {
+            System.out.println("You: " + humanScore + "  vs  Computer: " + computerScore + "\n" + computerName + " won.");
+        }
+    }
+
+    public static void displayGameScoreDraw(int humanScore, int computerScore) {
+
+        System.out.println("You: " + humanScore + "  vs  Opponent: " + computerScore + "\n" + "It's a draw.");
+    }
+
+    public static UserSelection replayGame() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Replay game?  (Y)yes  (N)o");
+            String s = scanner.nextLine().trim().toUpperCase();
+            switch (s) {
+                case "Y":
+                    return UserSelection.YES;
+                case "N":
+                    return UserSelection.NO;
+                default:
+                    System.out.println("Wrong selection, try again");
+            }
+        }
     }
 }

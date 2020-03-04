@@ -16,17 +16,17 @@ public class AI {
         if (userSelection == UserSelection.PAPER) {
             if (computerSelection == ComputerSelection.PAPER) return Winner.DRAW;
             if (computerSelection == ComputerSelection.SCISSORS) return Winner.COMPUTER;
-           else return Winner.HUMAN;
+            return Winner.HUMAN;
 
         } else if (userSelection == UserSelection.ROCK) {
             if (computerSelection == ComputerSelection.ROCK) return Winner.DRAW;
             if (computerSelection == ComputerSelection.SCISSORS) return Winner.HUMAN;
-           else return Winner.COMPUTER;
+            return Winner.COMPUTER;
 
         } else {
             if (computerSelection == ComputerSelection.SCISSORS) return Winner.DRAW;
             if (computerSelection == ComputerSelection.PAPER) return Winner.HUMAN;
-           else return Winner.COMPUTER;
+            return Winner.COMPUTER;
         }
     }
 }
