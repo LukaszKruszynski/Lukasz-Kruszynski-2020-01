@@ -1,9 +1,12 @@
 package com.kodilla.rps;
 
 public class RPSGame {
+    String userName = null;
 
     public boolean run() {
-        String userName = UserDialogs.getUserName();
+        if (userName == null) {
+            userName = UserDialogs.getUserName();
+        }
         String computerName = "Opponent";
         int rounds = UserDialogs.getNumberOfRounds();
         int round = 0;
