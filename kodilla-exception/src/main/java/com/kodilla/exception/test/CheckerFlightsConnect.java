@@ -4,22 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckerFlightsConnect {
-    boolean result;
 
-    public boolean findFilght(Flight flight) throws RouteNotFoundException {
+    public Boolean findFilght(Flight flight) throws RouteNotFoundException {
 
         Map<String, Boolean> mapOfFlights = addAirports();
-
-        for (Map.Entry<String, Boolean> flyChecker : mapOfFlights.entrySet()) {
-            if (flyChecker.getValue() == false) {
-                if (flyChecker.getKey().equals(flight.getArrivalAirport())) {
-                    result = mapOfFlights.containsKey(flight.getArrivalAirport());
-                    if (result == true)
-                        throw new RouteNotFoundException("Arrival airport " + flyChecker.getKey() + " is not available.");
-                }
-            }
+        if (mapOfFlights.containsKey(flight.getArrivalAirport())) {
+            return mapOfFlights.get(flight.getArrivalAirport());
+        } else {
+            throw new RouteNotFoundException("Arrival airport " + " is not available.");
         }
-        return result;
     }
 
     private Map<String, Boolean> addAirports() {

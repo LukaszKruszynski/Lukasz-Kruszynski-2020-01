@@ -13,8 +13,11 @@ public class FlightFinder {
         CheckerFlightsConnect checkerFlightsConnect = new CheckerFlightsConnect();
 
         try {
-            checkerFlightsConnect.findFilght(flight2);
-            System.out.println("This flight is available.");
+            if(checkerFlightsConnect.findFilght(flight6)) {
+                System.out.println("This flight is available.");
+            }else{
+                System.out.println("This flight is unavailable.");
+            }
         } catch (RouteNotFoundException e) {
             System.out.println(e.getMessage());
         } finally {
