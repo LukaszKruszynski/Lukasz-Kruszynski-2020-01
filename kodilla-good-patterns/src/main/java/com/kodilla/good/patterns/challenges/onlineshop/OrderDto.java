@@ -1,19 +1,27 @@
 package com.kodilla.good.patterns.challenges.onlineshop;
 
 public class OrderDto {
-    public User user;
-    public boolean isAvailable;
+    private String product;
+    private int quantity;
 
-    public OrderDto(final User user, final boolean isAvailable) {
-        this.user = user;
-        this.isAvailable = isAvailable;
+    public OrderDto(String product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
     }
 
-    public User getUser() {
-        return user;
+    public String getProduct() {
+        return product;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDto{" +
+                "product='" + product + '\'' +
+                ", quantity=" + quantity +
+                '}';
     }
 }

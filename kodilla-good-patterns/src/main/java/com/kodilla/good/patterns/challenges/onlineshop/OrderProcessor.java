@@ -14,16 +14,15 @@ public class OrderProcessor {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process(final OrderRequest orderRequest) {
-        boolean isAvailable = OrderService.order(orderRequest.getUser(), orderRequest.getOrderTime(),
-                orderRequest.getAddress());
+    public boolean process(final OrderDto orderDto, User user) {
+        boolean isAvailable = orderService.order(orderDto,user);
 
         if(isAvailable) {
-            informationService.inform(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getOrderTime(), orderRequest.getAddress());
-            return new OrderDto(orderRequest.getUser(), true);
+            informationService.sendMessage("Your order has arrived");
+            orderRepository.saveOrder(orderDto);
+            return true;
         } else {
-            return new OrderDto(orderRequest.getUser(), false);
+            return false;
         }
     }
 }
