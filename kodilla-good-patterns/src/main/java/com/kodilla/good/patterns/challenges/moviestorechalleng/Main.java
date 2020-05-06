@@ -1,4 +1,6 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.moviestorechalleng;
+
+import com.kodilla.good.patterns.challenges.moviestorechalleng.MovieStore;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,8 @@ public class Main {
                 .flatMap(e -> e.getValue().stream())
                 .collect(Collectors.joining("!"));
         System.out.println(result);
+
+
 
     }
 }
