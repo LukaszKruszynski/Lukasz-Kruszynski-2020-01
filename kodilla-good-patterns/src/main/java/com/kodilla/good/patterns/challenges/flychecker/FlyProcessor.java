@@ -8,12 +8,13 @@ public class FlyProcessor {
     public void finderFrom() {
         ConnectsFly connectsFly = new ConnectsFly();
         AirPorts airPorts = new AirPorts();
-        String searchingAirPort = airPorts.getWarsaw();
+        String searchingAirPort = airPorts.getSosnowiec();
         ArrayList<FlyDto> listOfConnects = connectsFly.getListOfConnects();
         List<FlyDto> result = listOfConnects.stream()
                 .filter(flyDto -> flyDto.getFrom().equals(searchingAirPort))
+                .filter(FlyDto::isAvailable)
                 .collect(Collectors.toList());
-        System.out.println("Connects from " + searchingAirPort + ": \n" + result);
+        System.out.println("Connects from " + searchingAirPort + ": \n" + result + "\n");
     }
 
     public void finderTo() {
@@ -23,8 +24,9 @@ public class FlyProcessor {
         ArrayList<FlyDto> listOfConnects = connectsFly.getListOfConnects();
         List<FlyDto> result = listOfConnects.stream()
                 .filter(flyDto -> flyDto.getTo().equals(searchingAirPort))
+                .filter(FlyDto::isAvailable)
                 .collect(Collectors.toList());
-        System.out.println("Connects to " + searchingAirPort + ": \n" + result);
+        System.out.println("Connects to " + searchingAirPort + ": \n" + result + "\n");
     }
 
     public void finderToThrough() {
@@ -33,25 +35,29 @@ public class FlyProcessor {
         String airPortFrom = airPorts.getSosnowiec();
         String airPortTo = airPorts.getNewYork();
         String airPortThrough = airPorts.getWarsaw();
-        List<FlyDto> resultFrom = connectsFly.getListOfConnects().stream()
-                .filter(flyDto -> flyDto.getFrom().equals(airPortFrom))
+
+        List<FlyDto> resultThrough = connectsFly.getListOfConnects().stream()
+                .filter(flyDto -> flyDto.getFrom().equals(airPortThrough) || flyDto.getTo().equals(airPortThrough))
+                .filter(FlyDto::isAvailable)
                 .collect(Collectors.toList());
 
-        List<FlyDto> resultTo = connectsFly.getListOfConnects().stream()
-                .filter(flyDto -> flyDto.getTo().equals(airPortTo))
+        List<FlyDto> result1 = resultThrough.stream()
+                .filter(flyDto -> flyDto.getFrom().equals(airPortFrom) && flyDto.getTo().equals(airPortThrough))
+                .filter(FlyDto::isAvailable)
                 .collect(Collectors.toList());
 
-        ArrayList<FlyDto> list = new ArrayList<>();
-        list.addAll(resultFrom);
-        list.addAll(resultTo);
+        List<FlyDto> result2 = resultThrough.stream()
+                .filter(flyDto -> flyDto.getFrom().equals(airPortThrough) && flyDto.getTo().equals(airPortTo))
+                .filter(FlyDto::isAvailable)
+                .collect(Collectors.toList());
 
-//        if (result.size() <= 0) {
-//            System.out.println("None available connects");
-//        } else {
-//            System.out.println("Connects to " + airPortTo + " trough " + airPortThrough
-//                    + " from " + airPortFrom + ": \n" + result);
-//
- //       }
+        if (result1.size() == 0 && result2.size() == 0) {
+            System.out.println("None available connects.\n");
+        } else {
+            System.out.println("Connects to " + airPortTo + " trough " + airPortThrough
+                    + " from " + airPortFrom + ": \n" + result1 + result2 + "\n");
+
+        }
     }
 }
 

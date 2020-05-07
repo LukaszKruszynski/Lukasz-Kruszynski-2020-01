@@ -27,11 +27,7 @@ public class FlyDto {
 
     @Override
     public String toString() {
-        if(isAvailable == true) {
-            return from + " to " + to + " is available";
-        }else{
-            return from + " to " + to + " is not available";
-        }
+            return from + " to " + to;
     }
 
     @Override
