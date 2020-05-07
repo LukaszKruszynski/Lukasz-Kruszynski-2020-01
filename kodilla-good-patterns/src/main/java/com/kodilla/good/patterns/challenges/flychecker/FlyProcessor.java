@@ -31,21 +31,27 @@ public class FlyProcessor {
         ConnectsFly connectsFly = new ConnectsFly();
         AirPorts airPorts = new AirPorts();
         String airPortFrom = airPorts.getSosnowiec();
-        String airPortTo = airPorts.getWarsaw();
-        String airPortThrough = airPorts.getNewYork();
-        String searchingAirPort = airPorts.getWarsaw();
-        List<FlyDto> result = connectsFly.getListOfConnects().stream()
+        String airPortTo = airPorts.getNewYork();
+        String airPortThrough = airPorts.getWarsaw();
+        List<FlyDto> resultFrom = connectsFly.getListOfConnects().stream()
                 .filter(flyDto -> flyDto.getFrom().equals(airPortFrom))
-                .filter(flyDto -> flyDto.getTo().equals(airPortTo))
-                .filter(flyDto -> flyDto.getFrom().equals(airPortThrough))
                 .collect(Collectors.toList());
-        if (result.size() <= 0) {
-            System.out.println("None available connects");
-        } else {
-            System.out.println("Connects to " + airPortTo + " trough " + airPortThrough
-                    + " from " + airPortFrom + ": \n" + result);
 
-        }
+        List<FlyDto> resultTo = connectsFly.getListOfConnects().stream()
+                .filter(flyDto -> flyDto.getTo().equals(airPortTo))
+                .collect(Collectors.toList());
+
+        ArrayList<FlyDto> list = new ArrayList<>();
+        list.addAll(resultFrom);
+        list.addAll(resultTo);
+
+//        if (result.size() <= 0) {
+//            System.out.println("None available connects");
+//        } else {
+//            System.out.println("Connects to " + airPortTo + " trough " + airPortThrough
+//                    + " from " + airPortFrom + ": \n" + result);
+//
+ //       }
     }
 }
 
