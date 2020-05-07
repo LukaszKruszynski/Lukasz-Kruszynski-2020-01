@@ -1,18 +1,21 @@
 package com.kodilla.good.patterns.challenges.flychecker;
 
 public class AirPorts {
-    private String warsaw;
-    private String berlin;
-    private String moscow;
-    private String barcelona;
-    private String paris;
-    private String newYork;
-    private String washington;
-    private String losAngeles;
-    private String tokyo;
-    private String seul;
-    private String capetown;
-    private String sosnowiec;
+    private final String warsaw = "Warsaw";
+    private final String berlin = "Berlin";
+    private final String moscow = "Moscow";
+    private final String barcelona = "Barcelona";
+    private final String paris = "Paris";
+    private final String newYork = "New York";
+    private final String washington = "Washington";
+    private final String losAngeles = "Los Angeles";
+    private final String tokyo = "Tokyo";
+    private final String seul = "Seul";
+    private final String capetown = "Capetown";
+    private final String sosnowiec = "Sosnowiec";
+
+    public AirPorts() {
+    }
 
     public String getWarsaw() {
         return warsaw;

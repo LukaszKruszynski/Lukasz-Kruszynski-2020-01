@@ -17,6 +17,8 @@ public class ConnectsFly {
         FlyDto moscowtoWarsaw = new FlyDto(airPorts.getMoscow(), airPorts.getWarsaw(), true);
         FlyDto warsawToCapetown = new FlyDto(airPorts.getWarsaw(), airPorts.getCapetown(), true);
         FlyDto seultToTokyo = new FlyDto(airPorts.getSeul(), airPorts.getTokyo(), true);
+        FlyDto sosnowiecToWarsaw = new FlyDto(airPorts.getSosnowiec(),airPorts.getWarsaw(),true);
+        FlyDto warsawToNewYork = new FlyDto(airPorts.getWarsaw(),airPorts.getNewYork(),true);
 
         listOfConnects.add(losAngelesToSosnowiec);
         listOfConnects.add(sosnowiecToLosAngeles);
@@ -29,6 +31,8 @@ public class ConnectsFly {
         listOfConnects.add(moscowtoWarsaw);
         listOfConnects.add(warsawToCapetown);
         listOfConnects.add(seultToTokyo);
+        listOfConnects.add(sosnowiecToWarsaw);
+        listOfConnects.add(warsawToNewYork);
 
         return listOfConnects;
     }
