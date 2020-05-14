@@ -1,7 +1,5 @@
 package com.kodilla.patterns.singleton;
 
-import sun.rmi.runtime.Log;
-
 public class Logger {
     private String lastLog = "";
     private static Logger loggerInstance = null;

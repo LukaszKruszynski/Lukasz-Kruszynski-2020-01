@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,10 @@ public class BoardTestSuite {
     public void testTaskAdd() {
         ApplicationContext context = new
                 AnnotationConfigApplicationContext(BoardConfig.class);
+        Board board = context.getBean(Board.class);
+        board.getDoneList().getTasks().add("go outside");
+        TaskList taskList = (TaskList)context.getBean("doneList");
+        Assert.assertEquals(1,taskList.getTasks().size());
 
     }
 }
