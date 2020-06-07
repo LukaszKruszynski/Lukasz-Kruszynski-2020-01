@@ -91,12 +91,15 @@ public class CompanyDaoTestSuite {
 
         //When
         companyDao.save(softwareMachine);
-        List<Company> companyByFirstCharacters = companyDao.findCompanyByFirstCharacters();
+        List<Company> companyByFirstCharacters = companyDao.findCompanyByFirstCharacters("Sof");
         int size = companyByFirstCharacters.size();
-        String substringName = companyByFirstCharacters.get(0).getName().substring(0, 3);
+        String substringName = companyDao.findCompanyByFirstCharacters("Sof").get(0).getName().substring(0, 3);
 
         //Then
         Assert.assertNotEquals(0,size);
         Assert.assertEquals("Sof",substringName);
+
+        //CleanUp
+        companyDao.delete(softwareMachine);
     }
 }

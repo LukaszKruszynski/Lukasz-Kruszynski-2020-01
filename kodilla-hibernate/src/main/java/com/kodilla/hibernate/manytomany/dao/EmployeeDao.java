@@ -13,9 +13,6 @@ import java.util.ArrayList;
 @Repository
 public interface EmployeeDao extends CrudRepository<Employee,Integer> {
 
-
     @Query
     ArrayList<Employee> findByLastName(@Param("LASTNAME") String lastName);
-
-
 }
