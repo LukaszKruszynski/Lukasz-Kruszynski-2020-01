@@ -5,8 +5,15 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(name = "Employee.findByLastName",
-            query = "FROM Employee WHERE lastName = :LASTNAME ")
+@NamedQueries({
+        @NamedQuery(name = "Employee.findByLastName",
+                query = "FROM Employee WHERE lastName = :LASTNAME "),
+        @NamedQuery(name = "Employee.findByPartialNameAndPartialLastName",
+                query = "FROM Employee WHERE lastName like CONCAT('%',:LastName,'%') AND firstName like CONCAT('%',:FIRSTNAME,'%'")
+}
+
+)
+
 
 @Entity
 @Table(name = "EMPLOYEES")
@@ -45,7 +52,7 @@ public class Employee {
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable (
+    @JoinTable(
             name = "JOIN_COMPANY_EMPLOYEE",
             joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
             inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}

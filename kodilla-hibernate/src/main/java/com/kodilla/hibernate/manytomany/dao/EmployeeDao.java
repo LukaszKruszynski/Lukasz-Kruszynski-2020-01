@@ -11,8 +11,11 @@ import java.util.ArrayList;
 
 @Transactional
 @Repository
-public interface EmployeeDao extends CrudRepository<Employee,Integer> {
+public interface EmployeeDao extends CrudRepository<Employee, Integer> {
 
     @Query
     ArrayList<Employee> findByLastName(@Param("LASTNAME") String lastName);
+
+    @Query
+    ArrayList<Employee> findByPartialNameAndPartialLastName(@Param("LASTNAME") String lastName, @Param("FIRSTNAME") String firstName);
 }

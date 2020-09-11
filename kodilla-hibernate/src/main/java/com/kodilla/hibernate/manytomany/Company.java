@@ -7,6 +7,9 @@ import java.util.List;
 @NamedNativeQuery(name = "Company.findCompanyByFirstCharacters",
                     query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT( :NAME, '%') ",
                     resultClass = Company.class)
+@NamedQuery(name = "Company.findByPartialName",
+        query = "FROM Company WHERE name like :%NAME%")
+
 
 @Entity
 @Table(name = "COMPANIES")
