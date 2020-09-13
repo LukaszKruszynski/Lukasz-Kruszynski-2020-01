@@ -12,7 +12,7 @@ public class EmployeeService {
     @Autowired
     EmployeeDao repository;
 
-    public List<Employee> findByPartial(String lastname,String firstname) {
-        return repository.findByPartialNameAndPartialLastName(lastname, firstname);
+    public List<Employee> findByPartOfLastName(String lastname) {
+        return repository.findByPartOfLastName(lastname);
     }
 }

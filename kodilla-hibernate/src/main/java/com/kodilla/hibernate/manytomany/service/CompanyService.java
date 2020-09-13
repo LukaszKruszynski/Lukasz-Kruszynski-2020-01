@@ -12,7 +12,7 @@ public class CompanyService {
     @Autowired
     CompanyDao repository;
 
-    public List<Company> findByPartialName(String name) {
-        return repository.findByPartialName(name);
+    public List<Company> findByPartOfName(String name) {
+        return repository.findByPartOfName(name);
     }
 }

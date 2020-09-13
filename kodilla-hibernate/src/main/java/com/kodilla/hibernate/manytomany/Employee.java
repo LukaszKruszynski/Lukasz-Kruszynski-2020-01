@@ -4,30 +4,32 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @NamedQueries({
         @NamedQuery(name = "Employee.findByLastName",
-                query = "FROM Employee WHERE lastName = :LASTNAME "),
-        @NamedQuery(name = "Employee.findByPartialNameAndPartialLastName",
-                query = "FROM Employee WHERE lastName like CONCAT('%',:LastName,'%') AND firstName like CONCAT('%',:FIRSTNAME,'%'")
-}
-
-)
-
+                query = "FROM Employee WHERE lastName = :LASTNAME ")
+})
+@NamedNativeQueries({
+        @NamedNativeQuery( name = "Employee.findByPartOfLastName",
+                query = "SELECT * FROM employees " +
+                        "WHERE lastName LIKE concat(\"%\", :LASTNAME, \"%\")",
+                resultClass = Employee.class)
+})
 
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
     private int id;
-    private String firstname;
+    private String firstName;
     private String lastName;
     private List<Company> companies = new ArrayList<>();
 
     public Employee() {
     }
 
-    public Employee(String firstname, String lastName) {
-        this.firstname = firstname;
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
@@ -41,8 +43,8 @@ public class Employee {
 
     @NotNull
     @Column(name = "FIRSTNAME")
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     @NotNull
@@ -65,8 +67,8 @@ public class Employee {
         this.id = id;
     }
 
-    private void setFirstname(String firstname) {
-        this.firstname = firstname;
+    private void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     private void setLastName(String lastname) {
@@ -75,5 +77,21 @@ public class Employee {
 
     public void setCompanies(List<Company> companies) {
         this.companies = companies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id &&
+                Objects.equals(firstName, employee.firstName) &&
+                Objects.equals(lastName, employee.lastName) &&
+                Objects.equals(companies, employee.companies);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, companies);
     }
 }

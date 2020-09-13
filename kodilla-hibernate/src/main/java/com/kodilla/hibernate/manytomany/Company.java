@@ -4,12 +4,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-@NamedNativeQuery(name = "Company.findCompanyByFirstCharacters",
-                    query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT( :NAME, '%') ",
-                    resultClass = Company.class)
-@NamedQuery(name = "Company.findByPartialName",
-        query = "FROM Company WHERE name like :%NAME%")
+import java.util.Objects;
 
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "Company.findCompanyByFirstCharacters",
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT( :NAME, '%') ",
+                resultClass = Company.class),
+        @NamedNativeQuery(
+                name = "Company.findByPartOfName",
+                query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT(\"%\", :NAME, \"%\")",
+                resultClass = Company.class
+        )
+})
 
 @Entity
 @Table(name = "COMPANIES")
@@ -54,5 +60,20 @@ public class Company {
 
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Company company = (Company) o;
+        return id == company.id &&
+                Objects.equals(name, company.name) &&
+                Objects.equals(employees, company.employees);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, employees);
     }
 }
