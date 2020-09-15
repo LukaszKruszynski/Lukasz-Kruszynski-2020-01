@@ -1,10 +1,10 @@
-package com.kodilla.patterns2.decorator.taxiportal.pizza;
+package com.kodilla.patterns2.pizza;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class GarlicSauceDecorator extends AbstractPizzaOrderDecorator {
-    public GarlicSauceDecorator(PizzaOrder pizzaOrder) {
+public class TomatoSauceDecorator extends AbstractPizzaOrderDecorator{
+    public TomatoSauceDecorator(PizzaOrder pizzaOrder) {
         super(pizzaOrder);
     }
 
@@ -16,7 +16,7 @@ public class GarlicSauceDecorator extends AbstractPizzaOrderDecorator {
     @Override
     public List<String> getIngredients() {
         List<String> ingredients = super.getIngredients();
-        ingredients.add("garlic dip");
+        ingredients.add("tomato dip");
         return ingredients;
     }
 }

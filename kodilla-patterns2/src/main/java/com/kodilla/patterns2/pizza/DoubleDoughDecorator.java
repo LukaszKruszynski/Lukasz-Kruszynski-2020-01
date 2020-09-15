@@ -1,22 +1,22 @@
-package com.kodilla.patterns2.decorator.taxiportal.pizza;
+package com.kodilla.patterns2.pizza;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-public class TomatoSauceDecorator extends AbstractPizzaOrderDecorator{
-    public TomatoSauceDecorator(PizzaOrder pizzaOrder) {
+public class DoubleDoughDecorator extends AbstractPizzaOrderDecorator {
+    public DoubleDoughDecorator(PizzaOrder pizzaOrder) {
         super(pizzaOrder);
     }
 
     @Override
     public BigDecimal getCost() {
-        return super.getCost().add(new BigDecimal(3));
+        return super.getCost().add(new BigDecimal(6));
     }
 
     @Override
     public List<String> getIngredients() {
         List<String> ingredients = super.getIngredients();
-        ingredients.add("tomato dip");
+        ingredients.add("double dough");
         return ingredients;
     }
 }
