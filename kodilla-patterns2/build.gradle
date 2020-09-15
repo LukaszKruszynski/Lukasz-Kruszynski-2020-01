@@ -25,5 +25,6 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.3.3.RELEASE'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
