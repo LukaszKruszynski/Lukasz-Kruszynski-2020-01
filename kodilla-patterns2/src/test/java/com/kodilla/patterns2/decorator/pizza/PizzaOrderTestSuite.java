@@ -1,4 +1,4 @@
-package com.kodilla.patterns2.decorator.taxiportal.pizza;
+package com.kodilla.patterns2.decorator.pizza;
 
 import com.kodilla.patterns2.pizza.*;
 import org.junit.Test;
